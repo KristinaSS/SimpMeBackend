@@ -35,6 +35,147 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ErrorDto"
+  /account/create:
+    post:
+      tags:
+        - Account
+      summary: Create Account
+      operationId: createAccount
+      requestBody:
+        description: Account creation details
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateAccountDTO"
+      responses:
+        "200":
+          description: Success
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorDto"
+        "404":
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorDto"
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorDto"
+  /skin/all:
+    post:
+      tags:
+        - Skin
+      summary: Get skins
+      operationId: getALlSkins
+      requestBody:
+        description: Get all skins account
+        required: true
+        content:
+          application/json:
+            schema:
+              type: string
+              format: uuid
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AccountDTO"
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorDto"
+        "404":
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorDto"
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorDto"
+  /skin/like:
+    post:
+      tags:
+        - Skin
+      summary: Like Skin
+      operationId: likeSkin
+      requestBody:
+        description: Like skin
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/AddSkinDto"
+      responses:
+        "200":
+          description: Success
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorDto"
+        "404":
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorDto"
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorDto"
+  /skin/own:
+    post:
+      tags:
+        - Skin
+      summary: Own Skin
+      operationId: ownSkin
+      requestBody:
+        description: Own skin
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/AddSkinDto"
+      responses:
+        "200":
+          description: Success
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorDto"
+        "404":
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorDto"
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorDto"
 components:
   schemas:
     ErrorDto:
@@ -44,4 +185,44 @@ components:
         code:
           type: string
         message:
+          type: string
+    SkinDTO:
+      type: object
+      properties:
+        id:
+          type: string
+        isLiked:
+          type: boolean
+        isOwned:
+          type: boolean
+    AccountDTO:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        skins:
+          type: array
+          items:
+            $ref: "#/components/schemas/SkinDTO"
+    CreateAccountDTO:
+      type: object
+      properties:
+        firstName:
+          type: string
+        lastName:
+          type: string
+        email:
+          type: string
+        password:
+          type: string
+        terms:
+          type: boolean
+    AddSkinDto:
+      type: object
+      properties:
+        accId:
+          type: string
+          format: uuid
+        skinId:
           type: string
