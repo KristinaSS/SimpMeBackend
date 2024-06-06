@@ -13,7 +13,7 @@ CREATE TABLE `simpme`.`account` (
                                     UNIQUE INDEX `email_UNIQUE` (`email` ASC) VISIBLE,
                                     UNIQUE INDEX `id_UNIQUE` (`id` ASC) VISIBLE);
 
--- Changeset kristina:2024-06-05-create-acc-table
+-- Changeset kristina:2024-06-05-create-skin-table
 CREATE TABLE `simpme`.`skin` (
                                  `id` VARCHAR(45) NOT NULL,
                                  `acc_id` BINARY(16) NOT NULL,
