@@ -81,8 +81,7 @@ paths:
         content:
           application/json:
             schema:
-              type: string
-              format: uuid
+              $ref: "#/components/schemas/AccountRequest"
       responses:
         "200":
           description: Success
@@ -226,3 +225,9 @@ components:
           format: uuid
         skinId:
           type: string
+    AccountRequest:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
