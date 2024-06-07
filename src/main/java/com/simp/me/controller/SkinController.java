@@ -23,11 +23,13 @@ public class SkinController implements SkinApi {
 
     @Override
     public ResponseEntity<Void> likeSkin(AddSkinDto addSkinDto) {
-        return null;
+        skinService.likeSkin(addSkinDto);
+        return ResponseEntity.ok(null);
     }
 
     @Override
     public ResponseEntity<Void> ownSkin(AddSkinDto addSkinDto) {
-        return null;
+        skinService.ownSkin(addSkinDto);
+        return ResponseEntity.ok(null);
     }
 }

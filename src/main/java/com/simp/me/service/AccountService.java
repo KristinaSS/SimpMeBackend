@@ -19,11 +19,14 @@ public class AccountService {
 
     public Void createAccount(CreateAccountDTO createAccountDTO) {
         Account account = ACCOUNT_MAPPER.mapToModel(createAccountDTO);
-        account.setId(UUID.randomUUID());
         account.setActive(true);
 
         accountRepository.save(account);
 
         return null;
+    }
+
+    public Account getAccountById(UUID id){
+        return accountRepository.getReferenceById(id);
     }
 }
