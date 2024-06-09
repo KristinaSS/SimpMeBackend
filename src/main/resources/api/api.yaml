@@ -141,6 +141,40 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ErrorDto"
+  /skin/unlike:
+    post:
+      tags:
+        - Skin
+      summary: unLike Skin
+      operationId: unLikeSkin
+      requestBody:
+        description: unLike skin
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/AddSkinDto"
+      responses:
+        "200":
+          description: Success
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorDto"
+        "404":
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorDto"
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorDto"
   /skin/own:
     post:
       tags:
@@ -149,6 +183,40 @@ paths:
       operationId: ownSkin
       requestBody:
         description: Own skin
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/AddSkinDto"
+      responses:
+        "200":
+          description: Success
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorDto"
+        "404":
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorDto"
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorDto"
+  /skin/disOwn:
+    post:
+      tags:
+        - Skin
+      summary: disOwn Skin
+      operationId: disOwnSkin
+      requestBody:
+        description: disOwn skin
         required: true
         content:
           application/json:

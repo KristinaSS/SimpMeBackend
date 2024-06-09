@@ -16,6 +16,12 @@ public class SkinController implements SkinApi {
     private SkinService skinService;
 
     @Override
+    public ResponseEntity<Void> disOwnSkin(AddSkinDto addSkinDto) {
+        skinService.nullifySkin(addSkinDto);
+        return ResponseEntity.ok(null);
+    }
+
+    @Override
     public ResponseEntity<AccountDTO> getALlSkins(AccountRequest uuid) {
         return ResponseEntity.ok(skinService.getAllSkins(uuid.getId()));
     }
@@ -29,6 +35,12 @@ public class SkinController implements SkinApi {
     @Override
     public ResponseEntity<Void> ownSkin(AddSkinDto addSkinDto) {
         skinService.ownSkin(addSkinDto);
+        return ResponseEntity.ok(null);
+    }
+
+    @Override
+    public ResponseEntity<Void> unLikeSkin(AddSkinDto addSkinDto) {
+        skinService.nullifySkin(addSkinDto);
         return ResponseEntity.ok(null);
     }
 }

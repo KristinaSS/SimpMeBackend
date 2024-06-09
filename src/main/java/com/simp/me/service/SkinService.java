@@ -58,4 +58,10 @@ public class SkinService {
                 .build();
         skinRepository.save(skin);
     }
+
+    public void nullifySkin(AddSkinDto addSkinDto) {
+        Account account = accountService.getAccountById(addSkinDto.getAccId());
+        SkinKey skinKey = SKIN_MAPPER.mapToKeyModel(addSkinDto, account);
+        skinRepository.deleteById(skinKey);
+    }
 }
